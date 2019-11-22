@@ -1,0 +1,7 @@
+https://cloud.google.com/docs/authentication/getting-started
+
+https://cloud.google.com/vision/docs/handwriting#vision-document-text-detection-nodejs
+
+https://googleapis.dev/nodejs/vision/latest/index.html
+
+https://console.cloud.google.com/apis/credentials?project=my-custom-project-259814&folder&organizationId

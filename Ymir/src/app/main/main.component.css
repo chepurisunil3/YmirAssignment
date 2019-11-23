@@ -110,3 +110,46 @@
     color: #4B0082;
     margin-bottom: 1.5vw;
 }
+@media screen and (max-width:768px) {
+    .main-content .left-content {
+        width: 30%;
+    }
+    .left-content h4 {
+        font-size: 3.5vw;
+    }
+    .left-content .history-data h4 {
+        font-size: 2vw;
+    }
+    .main-content .right-content {
+        width: 70%;
+    }
+    .right-content .image-file {
+        width: 90%;
+        margin-left: 5%;
+    }
+    .image-file input {
+        padding: 2vw;
+        font-size: 2vw;
+    }
+    .image-file button{
+        padding: 2vw;
+        font-size: 2vw;
+    }
+    .processed-text h4:first-child{
+        width: 100%;
+        font-size: 2.5vw;
+    }
+    .processed-text h4:nth-child(2) {
+        display: none;
+    }
+    .processed-text img {
+        width: 80%;
+        margin-left: 10%;
+    }
+    .processed-text p {
+        width: 80%;
+        margin-right: 10%;
+        font-size: 3vw;
+        margin-top: 4vw;
+    }
+}

@@ -93,3 +93,47 @@
     }
 
 }
+@media screen and (max-width:768px) {
+    .login-content .login-form {
+        width: 90%;
+        padding: 4vw;
+    }
+    .login-form input {
+        width: 80%;
+        margin-left: 10%;
+        margin-top:1.5vw;
+        border: none;
+        box-shadow: none;
+        border-radius: 5px;
+        padding: 2vw;
+        font-size: 3.5vw;
+        margin-top: 4vw;
+    }
+    .login-form button {
+        width: 50%;
+        color: white;
+        color: #000080;
+        background: #DCDCDC;
+        margin-left: 25%;
+        margin-top: 5vw;
+        font-weight: bold;
+        border: none;
+        box-shadow: none;
+        border-radius: 5px;
+        padding: 2vw;
+        cursor: pointer;
+        font-size: 3.5vw;
+    }
+    .login-form h4{
+        margin: 0;
+        padding: 0.5vw 0vw;
+        width: 60%;
+        text-align: center;
+        color: white;
+        font-size: 3vw;
+        margin-left: 20%;
+        font-weight: normal;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}

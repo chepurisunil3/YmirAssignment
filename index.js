@@ -27,9 +27,9 @@ MongoClient.connect(url,{useNewUrlParser:true,useUnifiedTopology:true}).then(res
 }).catch( errconn => {
     console.log("Error:",errconn);
 });
-app.use(bodyParser.urlencoded({'extended':'true'}));            // parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({'extended':'true',limit: '50mb'}));            // parse application/x-www-form-urlencoded
 app.use(bodyParser.json());                                     // parse application/json
-app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
+app.use(bodyParser.json({ type: 'application/vnd.api+json',limit: '50mb' })); // parse application/vnd.api+json as json
 app.use(methodOverride());
 app.use(cors());
 app.use(fileUpload());
@@ -73,12 +73,15 @@ app.post('/saveUserDetails', (request,result) => {
     var email = request.body.email;
     var name = request.body.username;
     var password = request.body.password;
+    console.log("request is ");
+    console.log(request);
+    console.log(email,name,password);
     mongoresult.collection("users").find({email:email}).toArray((err,res) => {
         if(res.length > 0) {
             result.status(202).json(
                 {
                     success:false,
-                    reason:"This Email is Already Registered"
+                    message:"This Email is Already Registered"
                 });
         }
         else {
@@ -114,7 +117,7 @@ app.get('/userLogin', (request,result) => {
                     {
                         success:true,
                         message:"Login Success",
-                        username:res.username
+                        username:res[0].username
                     });
             }
             else {
@@ -135,16 +138,18 @@ app.get('/userLogin', (request,result) => {
     });
 });
 app.get('/getHistoryData', (request,result) => {
-    var email = req.query.email;
+    var email = request.query.email;
     mongoresult.collection("ImagesAndText").find({email:email}).toArray((err,res) => {
         result.status(200).json(
             {
-                message:"Data Retrieval Success",
+                success:true,
                 data: res
             });
     });
 });
 app.post('/getTextFromFile',(request,result) => {
+    console.log(request.body);
+    console.log(request.files);
     var imageFile = request.files.uploadedImage;
     var processedText = "";
     var email = request.body.email;
@@ -188,13 +193,13 @@ app.post('/getTextFromFile',(request,result) => {
             console.log("inserted");
             lastImageId = lastImageId + 1;
             result.status(200).json({
-                message:"Success",
+                success:true,
                 text: processedText
             });
         }).catch(err => {
             result.status(202).json({
-                message:"Error",
-                err: err
+                success:false,
+                message: "Internal Error in API"
             })
         })
     }).catch(err => {

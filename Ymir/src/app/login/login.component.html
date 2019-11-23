@@ -1,0 +1,9 @@
+<div class="login-content">
+    <div class="login-form">
+        <input autocomplete="false" type="email" />
+        <input autocomplete="false" *ngIf="!isLogin" type="text" />
+        <input autocomplete="false" type="password" />
+        <button (click)="loginOrderRegister()" type="button">{{buttonText}}</button>
+        <h4 (click)="changeView()">{{registerStatus}}</h4>
+    </div>
+</div>

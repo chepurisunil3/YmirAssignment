@@ -28,8 +28,9 @@ export class MainComponent implements OnInit {
       this.fileName = event.target.files[0].name;
       const file = event.target.files[0];
       const reader = new FileReader();
-      reader.onload = e => {
-        this.isSelectedFromList = false;
+      let me = this;
+      reader.onload = function(e:any){
+        me.isSelectedFromList = false;
         setTimeout(function() {
           $("#uploadedImage").attr("src",e.target.result);
           //document.getElementById("uploadedImage").src = e.target.result;
